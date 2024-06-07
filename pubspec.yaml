@@ -1,0 +1,177 @@
+name: aplicacion_basica_curso
+description: "A new Flutter project."
+# The following line prevents the package from being accidentally published to
+# pub.dev using `flutter pub publish`. This is preferred for private packages.
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+# The following defines the version and build number for your application.
+# A version number is three numbers separated by dots, like 1.2.43
+# followed by an optional build number separated by a +.
+# Both the version and the builder number may be overridden in flutter
+# build by specifying --build-name and --build-number, respectively.
+# In Android, build-name is used as versionName while build-number used as versionCode.
+# Read more about Android versioning at https://developer.android.com/studio/publish/versioning
+# In iOS, build-name is used as CFBundleShortVersionString while build-number is used as CFBundleVersion.
+# Read more about iOS versioning at
+# https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
+# In Windows, build-name is used as the major, minor, and patch parts
+# of the product and file versions while build-number is used as the build suffix.
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.3.1 <4.0.0'
+
+# Dependencies specify other packages that your package needs in order to work.
+# To automatically upgrade your package dependencies to the latest versions
+# consider running `flutter pub upgrade --major-versions`. Alternatively,
+# dependencies can be manually updated by changing the version numbers below to
+# the latest version available on pub.dev. To see which dependencies have newer
+# versions available, run `flutter pub outdated`.
+dependencies:
+  flutter:
+    sdk: flutter
+
+
+  # The following adds the Cupertino Icons font to your application.
+  # Use with the CupertinoIcons class for iOS style icons.
+  cupertino_icons: ^1.0.6
+
+  http: ^1.2.1
+
+  flutter_swiper_null_safety: ^1.0.2
+
+  shared_preferences: ^2.2.2
+
+  flutter_native_splash: ^2.4.0
+
+  mask_text_input_formatter: ^2.9.0
+
+  flutter_local_notifications: ^17.0.0
+  
+  provider: ^6.1.2
+
+  sliding_up_panel: ^2.0.0+1
+
+  url_launcher: ^6.2.5
+  date_format_field: ^0.1.0
+  path_provider: ^2.1.3
+  sqflite: ^2.3.3+1
+  table_calendar: ^3.1.1
+  carousel_slider: ^4.2.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  # The "flutter_lints" package below contains a set of recommended lints to
+  # encourage good coding practices. The lint set provided by the package is
+  # activated in the `analysis_options.yaml` file located at the root of your
+  # package. See that file for information about deactivating specific lint
+  # rules and activating additional ones.
+  flutter_lints: ^3.0.0
+
+# For information on the generic Dart part of this file, see the
+# following page: https://dart.dev/tools/pub/pubspec
+
+# The following section is specific to Flutter packages.
+flutter:
+  uses-material-design: true
+  assets:
+  # IMAGENES DEL MODELO IMAGEDATA
+    - lib/assets/logoQ.PNG
+    - lib/assets/abuela.jpg
+    - lib/assets/abu1.jpg
+    - lib/assets/abu2.jpg
+    - lib/assets/abu3.jpg
+    - lib/assets/abu4.jpg
+    - lib/assets/albolafia.jpg
+    - lib/assets/alb1.jpeg
+    - lib/assets/alb2.jpeg
+    - lib/assets/alb3.jpeg
+    - lib/assets/alb4.jpeg
+    - lib/assets/alcazar.jpeg
+    - lib/assets/alcz1.jpg
+    - lib/assets/alcz2.jpg
+    - lib/assets/alcz3.jpg
+    - lib/assets/alcz4.jpg
+    - lib/assets/barrio.jpg
+    - lib/assets/ba1.jpg
+    - lib/assets/ba2.jpg
+    - lib/assets/ba3.jpg
+    - lib/assets/ba4.jpg
+    - lib/assets/juderia.jpg
+    - lib/assets/ju1.jpg
+    - lib/assets/ju2.jpg
+    - lib/assets/ju3.jpg
+    - lib/assets/ju4.jpg
+    - lib/assets/medina.jpg
+    - lib/assets/az1.jpg
+    - lib/assets/az2.jpg
+    - lib/assets/az3.jpg
+    - lib/assets/az4.jpg
+    - lib/assets/mezquita.jpg
+    - lib/assets/mez1.jpg
+    - lib/assets/mez2.jpg
+    - lib/assets/mez3.jpg
+    - lib/assets/mez4.jpg
+    - lib/assets/puente.jpg
+    - lib/assets/pu1.jpg
+    - lib/assets/pu2.jpg
+    - lib/assets/pu3.jpg
+    - lib/assets/pu4.jpg
+    - lib/assets/sierra.jpg
+    - lib/assets/si1.jpg
+    - lib/assets/si2.jpg
+    - lib/assets/si3.jpg
+    - lib/assets/si4.jpg
+    - lib/assets/viana.jpg
+    - lib/assets/vi1.jpg
+    - lib/assets/vi2.jpg
+    - lib/assets/vi3.jpg
+    - lib/assets/vi4.jpg
+
+  # IMAGENES DEL PDF
+    - lib/assets/pdf1.jpg  
+    - lib/assets/pdf2.jpg  
+    - lib/assets/pdf3.jpg  
+    - lib/assets/pdf4.jpg  
+    - lib/assets/pdf5.jpg  
+    - lib/assets/pdf6.jpg  
+    - lib/assets/pdf7.jpg  
+    - lib/assets/pdf8.jpg  
+    - lib/assets/pdf9.jpg  
+    - lib/assets/pdf10.jpg  
+    - lib/assets/pdf11.jpg  
+    - lib/assets/pdf12.jpg  
+    - lib/assets/pdf13.jpg  
+    - lib/assets/pdf14.jpg  
+    - lib/assets/pdf15.jpg  
+    - lib/assets/pdf16.jpg  
+    - lib/assets/pdf17.jpg  
+
+
+  # An image asset can refer to one or more resolution-specific "variants", see
+  # https://flutter.dev/assets-and-images/#resolution-aware
+
+  # For details regarding adding assets from package dependencies, see
+  # https://flutter.dev/assets-and-images/#from-packages
+
+  # To add custom fonts to your application, add a fonts section here,
+  # in this "flutter" section. Each entry in this list should have a
+  # "family" key with the font family name, and a "fonts" key with a
+  # list giving the asset and other descriptors for the font. For
+  # example:
+  # fonts:
+  #   - family: Schyler
+  #     fonts:
+  #       - asset: fonts/Schyler-Regular.ttf
+  #       - asset: fonts/Schyler-Italic.ttf
+  #         style: italic
+  #   - family: Trajan Pro
+  #     fonts:
+  #       - asset: fonts/TrajanPro.ttf
+  #       - asset: fonts/TrajanPro_Bold.ttf
+  #         weight: 700
+  #
+  # For details regarding fonts from package dependencies,
+  # see https://flutter.dev/custom-fonts/#from-packages
