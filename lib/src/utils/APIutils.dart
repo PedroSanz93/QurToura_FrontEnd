@@ -33,12 +33,12 @@ class APIUtils {
 void main() async {
   var apiUtils = APIUtils();
 
-  // Ejemplo de cómo usar la función call para hacer una solicitud GET
+  // Ejemplo de como usar la funcion call para hacer una solicitud GET
   var url = 'https://api.example.com/data';
   var responseData = await apiUtils.call(url);
   print(responseData);
 
-  // Ejemplo de cómo usar la función call para hacer una solicitud POST
+  // Ejemplo de como usar la funcion call para hacer una solicitud POST
   var postUrl = 'https://api.example.com/post';
   var postData = {'key': 'value'};
   var responsePost = await apiUtils.call(postUrl, method: 'POST', data: postData);

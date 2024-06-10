@@ -1,14 +1,13 @@
 import 'package:aplicacion_basica_curso/src/config/routes.dart';
 import 'package:flutter/material.dart';
 import 'src/config/import.dart';
-
-void main()=>runApp(MyApp());
 // main de la app
-class MyApp extends StatefulWidget{
+void main()=>runApp(Qurtoura());
+class Qurtoura extends StatefulWidget{
   @override
-  State<MyApp> createState() => _MyAppState();
+  State<Qurtoura> createState() => _QurtouraState();
 }
-class _MyAppState extends State<MyApp> {
+class _QurtouraState extends State<Qurtoura> {
   @override
   Widget build(BuildContext context){
     return MaterialApp(

@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
-// vista horario monumentos
+// clase horario monumentos
 class Schedule extends StatefulWidget {
   const Schedule({Key? key}) : super(key: key);
-
   @override
   State<Schedule> createState() => _ScheduleState();
 }
-
 // lista de assets para pdf
 class _ScheduleState extends State<Schedule> {
   List<String> imagePaths = [
@@ -29,7 +27,6 @@ class _ScheduleState extends State<Schedule> {
     'lib/assets/pdf16.jpg',
     'lib/assets/pdf17.jpg',
   ];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -63,7 +60,7 @@ class _ScheduleState extends State<Schedule> {
       ),
     );
   }
-// funcion para contenido
+// funcion para aumentar vision del contenido
   void _showImageDialog(String imagePath) {
     showDialog(
       context: context,

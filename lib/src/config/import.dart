@@ -1,4 +1,4 @@
-//importaciones de bibliotecas para optimizacion
+// importaciones de bibliotecas para optimizacion
 export 'package:aplicacion_basica_curso/src/ui/views/homeScreen.dart';
 export 'package:aplicacion_basica_curso/src/ui/views/loginScreen.dart';
 export 'package:aplicacion_basica_curso/src/ui/views/pagina2.dart';

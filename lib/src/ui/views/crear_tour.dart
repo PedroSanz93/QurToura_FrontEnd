@@ -1,51 +1,51 @@
 import 'package:aplicacion_basica_curso/src/data/remote/models/user_data.dart';
 import 'package:flutter/material.dart';
 import 'package:aplicacion_basica_curso/src/ui/views/resumen_tour.dart';
-
+// clase crear tour
 class CreateTour extends StatefulWidget {
   const CreateTour({Key? key}) : super(key: key);
-
   @override
   State<CreateTour> createState() => _CreateTourState();
 }
-
 class _CreateTourState extends State<CreateTour> {
-  int horasDisponibles = 1;
-  String nombreTour= '';
+  // parametros crear tour
+  int horasDisponibles = 1; // incia en 1 para minimo 1 hora de tour
+  String nombreTour= ''; // nombre vacio
+  // las variables de las actividades, inician en false hasta que cambien al marcarlas
   bool cultural = false;
   bool gastronomia = false;
   bool ocio = false;
   bool naturaleza = false;
-
+  // metodo obtener tour, crea listas para almacenar la informacion de los tours
   List<dynamic>? _obtenerTours(idsSeleccionados, horas) {
   List<dynamic>? placesOfInterest = UserData().datosLugaresInteresarioTours;
 
   if (placesOfInterest == null) {
-    // Manejar el caso en que no hay datos de lugares de interés
+    // manejar el caso en que no hay datos de lugares de interes
     return null;
   } else {
-    // Filtrar los lugares de interés por idCategoria antes de mostrarlos
+    // filtra los lugares de interes por idCategoria antes de mostrarlos
     List<dynamic> filteredPlaces = placesOfInterest.where((place) => idsSeleccionados.contains(place['idCategoria'])).toList();
 
     filteredPlaces.shuffle();
     
-    // Crear un mapa para almacenar las actividades seleccionadas por categoría
+    // crea un mapa para almacenar las actividades seleccionadas por categoria
     Map<int, dynamic> selectedActivities = {};
     Map<int, dynamic> lugaresSeleccionados = {};
 
-    // Recorrer la lista filtrada de lugares de interés
+    // recorre la lista filtrada de lugares de interes
     for (var place in filteredPlaces) {
-      // Obtener la categoría y el ID del lugar de interés
+      // obtiene la categoria y el ID del lugar de interes
       int categoria = place['idCategoria'];
       int idLugar = place['idLugar'];
       String nombreLugar = place['nombre'];
       
-      // Verificar si todavía hay horas disponibles después de agregar las horas de la actividad anterior
+      // verifica si todavia hay horas disponibles despues de agregar las horas de la actividad anterior
       if (horas > 0) {
         if (selectedActivities.containsKey(categoria)) {
           if (idsSeleccionados.every((id) => selectedActivities.containsKey(id))) {
-            // Si todos los IDs de idsSeleccionados están presentes en selectedActivities,
-            // introducimos la actividad ya que ha completado una vuelta a la lista de lugar de interes
+            // si todos los IDs de idsSeleccionados estan presentes en selectedActivities,
+            // mete la actividad, ya que ha completado una vuelta a la lista de lugar de interes
             selectedActivities[categoria] = {
               'idLugar': idLugar,
             };
@@ -56,7 +56,7 @@ class _CreateTourState extends State<CreateTour> {
             horas -= place['tiempo'];
           }
         } else {
-          // Si todavía hay horas disponibles, y no hay actividades de esta categoria seleccionadas,
+          // si todavia hay horas disponibles, y no hay actividades de esta categoria seleccionadas,
           // seleccionamos esta actividad y restamos las horas de esta actividad al tiempo disponible
           selectedActivities[categoria] = {
             'idLugar': idLugar,
@@ -68,12 +68,12 @@ class _CreateTourState extends State<CreateTour> {
           horas -= place['tiempo'];
         }
       } else {
-        // Si no quedan horas disponibles, salimos del bucle
+        // si no quedan horas disponibles, salimos del bucle
         break;
       }
     }
     
-    // Convertir el mapa de actividades seleccionadas a una lista
+    // convierte el mapa de actividades seleccionadas a una lista
     List<dynamic> selectedActivitiesList = selectedActivities.values.toList();
     List<dynamic> actividadesSeleccionadas = lugaresSeleccionados.values.toList();
     
@@ -123,8 +123,7 @@ void _startTour() {
     ),
   );
 }
-
-  // vista del contenido de la pagina
+  // vista presentacion del contenido de la pagina
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -263,7 +262,7 @@ void _startTour() {
   }
 }
 
-/*  PRUEBAS
+/*  FUTURAS PRUEBAS
 import 'package:aplicacion_basica_curso/src/data/remote/models/user_data.dart';
 import 'package:flutter/material.dart';
 import 'package:aplicacion_basica_curso/src/ui/views/resumen_tour.dart';

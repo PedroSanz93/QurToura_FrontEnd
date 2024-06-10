@@ -2,14 +2,14 @@ import 'package:aplicacion_basica_curso/src/data/remote/models/user_data.dart';
 import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-
+// clase resumen tour
 class TourSummary extends StatefulWidget {
-  // PARAMETROS A RECIBIR
+  // parametros de la clase
   final String? nombreTour;
   final List<dynamic>? toursPropuestos1;
   final List<dynamic>? toursPropuestos2;
   final List<dynamic>? toursPropuestos3;
-// CONSTRUCTOR
+// constructor
   const TourSummary({
     Key? key,
     this.nombreTour,
@@ -17,18 +17,15 @@ class TourSummary extends StatefulWidget {
     this.toursPropuestos2,
     this.toursPropuestos3,
   }) : super(key: key);
-
   @override
   _TourSummaryState createState() => _TourSummaryState();
 }
-
 class _TourSummaryState extends State<TourSummary> {
   int? _selectedTour;
-
+  // funcion para crear las opciones a elegir del usuario dependiendo de sus preferencias
   void _generarTour() async {
     List<dynamic>? tourPropuesto;
-
-    // Seleccionar el tour segun el checkbox seleccionado
+    // selecciona el tour segun el checkbox marcado
     switch (_selectedTour) {
       case 1:
         tourPropuesto = widget.toursPropuestos1;
@@ -52,22 +49,21 @@ class _TourSummaryState extends State<TourSummary> {
     }
     // variable nombre
     String? nombreTour = widget.nombreTour;
-
+    // si el tour no es nulo
     if (tourPropuesto != null) {
       // imprimir por consola para pruebas
       print(idUsuario);
       print(widget.nombreTour);
       print(tourPropuesto);
-      // conexion con el modelo
+      // llama al back end con los parametros en la URL para que el usuario registre su tour
       var url = Uri.parse(
           'https://photic-color.000webhostapp.com/generarTour?idUsuario=$idUsuario&nombreTour=$nombreTour&tiempoEstimado=$tiempoEstimado&sitiosElegidos=$tourPropuesto');
-      // Realizar la solicitud HTTP
+      // realiza la solicitud HTTP
       var response = await http.get(url);
-
-      // Verificar si la solicitud fue exitosa (codigo de estado 200)
+      // verifica si la solicitud fue exitosa (codigo de estado 200)
       if (response.statusCode == 200 &&
           jsonDecode(response.body)['success'] == true) {
-        // Asignar el JSON devuelto a la variable userData de UserData
+        // mete el JSON devuelto a la variable userData de UserData
         UserData().datosUsuarioTours =
             jsonDecode(response.body)['datosUsuario']['original'];
         UserData().datosLugaresInteresarioTours =
@@ -80,7 +76,7 @@ class _TourSummaryState extends State<TourSummary> {
                   'Su tour se ha creado correctamente, podrá verlo en la sección Area Usuario. \nLe llegará a su correo electrónico toda la información.')),
         );
       } else {
-        // Si la solicitud no fue exitosa, mostrar un mensaje de error
+        // si la solicitud no fue correcto, muestra un mensaje de error
         showDialog(
           context: context,
           builder: (_) => AlertDialog(
@@ -98,13 +94,13 @@ class _TourSummaryState extends State<TourSummary> {
         );
       }
     } else {
-      // Manejar el caso en que no se selecciona ningun tour
-      ScaffoldMessenger.of(context).showSnackBar( // mensaje error
+      // para manejar el caso en que no se selecciona ningun tour muestra un mensaje
+      ScaffoldMessenger.of(context).showSnackBar( 
         SnackBar(content: Text('Por favor, selecciona un tour.')),
       );
     }
   }
-// vista de la informacion
+// presentacion visual de la informacion
   @override
   Widget build(BuildContext context) {
     return Scaffold(

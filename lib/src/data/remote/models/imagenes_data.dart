@@ -1,11 +1,12 @@
 
-// lista modelo de image data para mostrar imagenes internas de la app
+// clase modelo de image data para mostrar imagenes internas de la app
 class ImageData {
+  // atributos de la clase modelo
   final String assetPath;
   final String description;
   final String mapsUrl;
   final List<String> otrasImagenes;
-
+  
   ImageData
   (this.assetPath, 
   this.description, 
@@ -13,7 +14,7 @@ class ImageData {
   this.otrasImagenes
   );
 }
-
+// listas con el contenido del objeto
 List<ImageData> images = [
   ImageData(
     "lib/assets/mezquita.jpg",

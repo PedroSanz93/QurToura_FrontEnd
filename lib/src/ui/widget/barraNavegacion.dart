@@ -3,7 +3,7 @@ import 'package:aplicacion_basica_curso/src/ui/views/ayuda.dart';
 import 'package:aplicacion_basica_curso/src/ui/widget/global/barraLateral.dart';
 import 'package:flutter/material.dart';
 
-// barra de navegacion para dirigir a diferentes paginas
+// clase appbar (barra de navegacion) para dirigir a diferentes paginas
 class barraNavegacion extends StatelessWidget {
   const barraNavegacion({
     super.key,
@@ -36,6 +36,7 @@ class barraNavegacion extends StatelessWidget {
               },
               icon: Icon(Icons.help))
         ]),
+        // TabBar con las 3 paginas principales
         bottom: const TabBar(
           indicatorColor: Colors.white,
           tabs: [
@@ -67,7 +68,7 @@ class barraNavegacion extends StatelessWidget {
       backgroundColor:
           Color.fromARGB(245, 222, 179, 130), //const Color(0xFFF5DEB3),
       body: TabBarView(
-        // rutas del tabbar
+        // rutas del tabBar
         children: [
           Pagina1(), 
           Pagina2(), 

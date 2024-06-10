@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:aplicacion_basica_curso/src/data/remote/models/user_data.dart';
-
+// clase ventana usuario
 class UserScreen extends StatelessWidget {
   const UserScreen({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     // lista del modelo usduario
     List<dynamic> tours = UserData().datosUsuarioTours ?? [];
-// vista
+  // presentacion de la vista
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(255, 122, 85, 62),
@@ -57,6 +56,7 @@ class UserScreen extends StatelessWidget {
                     ),
                   ),
                 ),
+              // widget para la presentacion en vista  
               Card(
                 margin: EdgeInsets.all(8.0),
                 child: ListTile(

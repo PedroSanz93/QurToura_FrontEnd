@@ -1,10 +1,11 @@
 import 'package:aplicacion_basica_curso/src/ui/views/crear_tour.dart';
 import 'package:flutter/material.dart';
-// pagina1 homescreen
+// clase pagina1 homescreen del appbar
 class Pagina1 extends StatelessWidget {
   const Pagina1({super.key});
   @override
   Widget build(BuildContext context) {
+    // devuelve la la informacion montada
     return Scaffold(
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16.0),
@@ -45,6 +46,7 @@ class Pagina1 extends StatelessWidget {
               ),
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(15.0),
+                // imagen del homescreen
                 child: Image.network(
                   'https://www.hola.com/imagenes/viajes/20200717172215/la-mezquita-de-cordoba-mas-bella-a-la-caida-de-la-noche/0-848-73/mezquita-de-cordoba-noche-exterior-t.jpg?im=Resize=(680)',
                   alignment: Alignment.center,
@@ -78,7 +80,7 @@ class Pagina1 extends StatelessWidget {
             ),
             ElevatedButton(
               onPressed: () {
-                // ruta para crear tour
+                // ruta de navegacion para acceder a la clase crear tour
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => CreateTour()));
               },
@@ -99,7 +101,7 @@ class Pagina1 extends StatelessWidget {
             SizedBox(
               height: 40,
             ),
-            // apartado de reseñas
+            // apartado de reseñas a modo visual
             Text(
               'Opiniones de Usuarios',
               style: TextStyle(
@@ -128,6 +130,7 @@ class Pagina1 extends StatelessWidget {
       ),
     );
   }
+  // widget para montar el apartado de opiniones visual
   Widget _buildRatingStars(int stars, int count) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 4.0),

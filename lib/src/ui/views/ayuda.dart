@@ -1,13 +1,11 @@
 import 'package:aplicacion_basica_curso/src/config/import.dart';
 import 'package:flutter/material.dart';
-// pagina ayuda
+// clase de pagina ayuda
 class HelpScreen extends StatefulWidget {
   const HelpScreen({super.key});
-
   @override
   State<HelpScreen> createState() => _HelpScreenState();
 }
-
 class _HelpScreenState extends State<HelpScreen> {
   // map clave valor con informacion de pregunta respuesta de ayuda
   final List<Map<String, String>> faq = [
@@ -64,7 +62,7 @@ class _HelpScreenState extends State<HelpScreen> {
           'En la barra lateral en la parte inferior izquierta tienes el botón de salir, toda tu información se almacenará en nuestra base de datos de forma segura.'
     },
   ];
-// vista
+// presentacion de la vista
   @override
   Widget build(BuildContext context) {
     return Scaffold(

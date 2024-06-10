@@ -1,38 +1,32 @@
 import 'dart:convert';
-
 import 'package:aplicacion_basica_curso/src/data/remote/models/user_data.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-
-//ventana de login
+//clase de login
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
-
   @override
   State<LoginScreen> createState() => _LoginScreenState();
 }
-
 class _LoginScreenState extends State<LoginScreen> {
-  //Variables para guardar el contenido de los textfield que mete el usuario por teclado
+  //variables para guardar el contenido de los textfield que mete el usuario por teclado
   String user = '';
   String password = '';
-
   // variables para regristro de usuario
   String nombre = '';
   String apellido = '';
   String correo = '';
   String pass = '';
   String pass2 = ''; // repetir contraseña
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false, // PARA NO VOLVER ATRAS
       appBar: AppBar(
-        backgroundColor: const Color(0xFF5E5A3C), // Color del AppBar
+        backgroundColor: const Color(0xFF5E5A3C), // color del AppBar
       ),
       body: Container(
-        color: const Color(0xFF5E5A3C), // Color de fondo de la pantalla
+        color: const Color(0xFF5E5A3C), // color de fondo de la pantalla
         child: ListView(
           children: [
             Padding(
@@ -91,17 +85,17 @@ class _LoginScreenState extends State<LoginScreen> {
                         // diseño boton
                         child: ElevatedButton(
                           onPressed: () async {
-                            // URL de la ruta en Laravel
+                            // URL de la ruta para peticion a la bbdd para el LOGIN
                             var url = Uri.parse(
                                 'https://photic-color.000webhostapp.com/login?email=$user&contra=$password');
                             try {
-                              // Realizar la solicitud HTTP
+                              // realizar la solicitud HTTP
                               var response = await http.get(url);
-                              // Verificar si la solicitud fue exitosa (codigo de estado 200)
+                              // verifica si la solicitud fue bien (codigo de estado 200)
                               if (response.statusCode == 200 &&
                                   jsonDecode(response.body)['success'] ==
                                       true) {
-                                // Asignar el JSON devuelto a la variable userData de UserData
+                                // mete el JSON devuelto a la variable userData de UserData
                                 UserData().datosUsuarioTours =
                                     jsonDecode(response.body)['datosUsuario']
                                         ['original'];
@@ -111,7 +105,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 Navigator.pushReplacementNamed(
                                     context, '/home');
                               } else {
-                                // Si la solicitud no fue exitosa, mostrar un mensaje de error
+                                // si la solicitud falla, muestra un mensaje de error en un pop-up
                                 showDialog(
                                   context: context,
                                   builder: (_) => AlertDialog(
@@ -130,7 +124,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 );
                               }
                             } catch (e) {
-                              // Si ocurre un error durante la solicitud, mostrar un mensaje de error
+                              // si ocurre un error durante la solicitud, muestra un mensaje de error
                               showDialog(
                                 context: context,
                                 builder: (_) => AlertDialog(
@@ -147,22 +141,21 @@ class _LoginScreenState extends State<LoginScreen> {
                                 ),
                               );
                             }
-
                             //PRUEBA: Navigator.pushReplacementNamed(context, '/home');
                           },
                           style: ElevatedButton.styleFrom(
                             backgroundColor:
-                                Color(0xFF2B1E16), // Color del boton
+                                Color(0xFF2B1E16), // color del boton
                           ),
                           child: const Text(
                             'Iniciar',
                             style: TextStyle(
                                 color:
-                                    Colors.white), // Color del texto del boton
+                                    Colors.white), // color del texto del boton
                           ),
                         ),
                       ),
-                      SizedBox(width: 3), // Espacio entre botones
+                      SizedBox(width: 3), // espacio entre botones
                       Expanded(
                         child: ElevatedButton(
                           onPressed: () {
@@ -242,14 +235,15 @@ class _LoginScreenState extends State<LoginScreen> {
                                     ElevatedButton(
                                       onPressed: () async {
                                         if (pass == pass2) {
+                                          // URL de la ruta para peticion a la bbdd para el REGISTRO DE USUARIO
                                           var url = Uri.parse(
                                               'https://photic-color.000webhostapp.com/registro?email=$correo&contra=$pass&nombre=$nombre&apellido=$apellido');
                                           try {
-                                            // Realizar la solicitud HTTP
+                                            // realizar la solicitud HTTP
                                             var response = await http.get(url);
                                             // respuesta por consola
                                             print(response);
-                                            // Verificar si la solicitud fue exitosa (codigo de estado 200)
+                                            // verifica si la solicitud fue bien (codigo de estado 200)
                                             if (response.statusCode == 200 &&
                                                 (jsonDecode(response.body)[
                                                         'success'] ==
@@ -275,7 +269,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                                 ),
                                               );
                                             } else {
-                                              // Si la solicitud no fue exitosa, mostrar un mensaje de error
+                                              // si la solicitud fue mal, muestra un mensaje de error
                                               showDialog(
                                                 context: context,
                                                 builder: (_) => AlertDialog(
@@ -295,7 +289,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                               );
                                             }
                                           } catch (e) {
-                                            // Si ocurre un error durante la solicitud, mostrar un mensaje de error
+                                            // si ocurre un error durante la solicitud, muestra un mensaje de error
                                             showDialog(
                                               context: context,
                                               builder: (_) => AlertDialog(
@@ -328,13 +322,13 @@ class _LoginScreenState extends State<LoginScreen> {
                           },
                           style: ElevatedButton.styleFrom(
                             backgroundColor:
-                                Color(0xFF2B1E16), // Color del boton
+                                Color(0xFF2B1E16),
                           ),
                           child: const Text(
                             'Registro',
                             style: TextStyle(
                                 color:
-                                    Colors.white), // Color del texto del boton
+                                    Colors.white),
                           ),
                         ),
                       ),

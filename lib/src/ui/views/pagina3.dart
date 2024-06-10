@@ -4,26 +4,24 @@ import 'package:sqflite/sqflite.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:path/path.dart';
 import 'dart:async';
-
+// clase pagina3 calendario del appbar
 class Pagina3 extends StatefulWidget {
   @override
   _Pagina3State createState() => _Pagina3State();
 }
-
 class _Pagina3State extends State<Pagina3> {
+  // parametros de la clase
   CalendarFormat _calendarFormat = CalendarFormat.month;
   DateTime _selectedDay = DateTime.now();
   DateTime _focusedDay = DateTime.now();
   Database? _database;
   Map<DateTime, List<Map<String, String>>> _events = {};
   List<Map<String, String>> _selectedEvents = [];
-
   @override
   void initState() {
     super.initState();
     _initializeDatabase();
   }
-
   // funcion future para que cuando se inicie la app por primera vez se inserte la bbdd entera
   // cuando se efectue alguna modificacion hay que volver a instalar la app
   Future<void> _initializeDatabase() async {
@@ -33,11 +31,12 @@ class _Pagina3State extends State<Pagina3> {
       path,
       version: 1,
       onCreate: (db, version) async {
-        // Base de datos interna con todos los campos
+        // base de datos interna con todos los campos
+        // a modo de prueba se incluiran eventos de mayo en la version inicial de prueba para la demo 
         await db.execute(
           'CREATE TABLE events (id INTEGER PRIMARY KEY, date TEXT, event TEXT, description TEXT)',
         );
-
+        // insercion de campos
         await db.insert(
           'events',
           {
@@ -190,10 +189,9 @@ class _Pagina3State extends State<Pagina3> {
         );
       },
     );
-
+    // llamada a la funcion futura
     await _loadEvents();
   }
-
   // funcion para cargar en el map dia del calendario con el nombre del evento y la descripcion
   Future<void> _loadEvents() async {
     final List<Map<String, dynamic>> maps = await _database!.query('events');
@@ -211,13 +209,14 @@ class _Pagina3State extends State<Pagina3> {
       }
     });
   }
-
+  // funcion lista para formatear fechas
   List<Map<String, String>> _getEventsForDay(DateTime day) {
     return _events[DateTime(day.year, day.month, day.day)] ?? [];
   }
-// vista
+// presentacion del calendario
   @override
   Widget build(BuildContext context) {
+    // devuelve la informacion montada y formateada
     return Scaffold(
       backgroundColor: Color.fromARGB(245, 255, 255, 255),
       body: Column(
@@ -230,7 +229,6 @@ class _Pagina3State extends State<Pagina3> {
               lastDay: DateTime.utc(2030, 3, 14),
               focusedDay: _focusedDay,
               calendarFormat: _calendarFormat,
-              
               selectedDayPredicate: (day) => isSameDay(_selectedDay, day),
               onDaySelected: (selectedDay, focusedDay) {
                 setState(() {
@@ -293,6 +291,7 @@ class _Pagina3State extends State<Pagina3> {
           const SizedBox(height: 1.0),
           Expanded(
             child: _selectedEvents.isEmpty
+              // operador ternario que devuelve el evento formateado visualmente o no dependiendo de si en la fecha hay o no evento
                 ? const Center(child: Text('No events'))
                 : ListView.builder(
                     itemCount: _selectedEvents.length,

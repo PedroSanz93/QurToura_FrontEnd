@@ -2,7 +2,7 @@ import 'package:aplicacion_basica_curso/src/data/remote/models/imagenes_data.dar
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:url_launcher/url_launcher.dart';
-// pagina lugares destacados del appbar
+// clase pagina2 lugares destacados del appbar
 class Pagina2 extends StatefulWidget {
   const Pagina2({Key? key}) : super(key: key);
   @override
@@ -13,6 +13,7 @@ class _Pagina2State extends State<Pagina2> {
 // vista de la informacion
   @override
   Widget build(BuildContext context) {
+    // devuelve la la informacion montada
     return Scaffold(
       backgroundColor: Color.fromARGB(245, 255, 255, 255),
       appBar: AppBar(
@@ -20,7 +21,7 @@ class _Pagina2State extends State<Pagina2> {
       ),
       body: GridView.builder(
         scrollDirection: Axis.vertical,
-        itemCount: images.length, // imagen de modelo imagendata 
+        itemCount: images.length, // imagen de clase modelo imagendata 
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 1,
           crossAxisSpacing: 4,
@@ -38,7 +39,7 @@ class _Pagina2State extends State<Pagina2> {
               children: [
                 Expanded(
                   child: Image.asset(
-                    imageData.assetPath, // lista de imagenes dentro de la imagen en modelo imagendata
+                    imageData.assetPath, // lista de imagenes dentro de la imagen en clase modelo imagendata
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -51,7 +52,7 @@ class _Pagina2State extends State<Pagina2> {
                 ),
                 ElevatedButton(
                   onPressed: () {
-                    // boton llama a mostra panel y lo despliega y se le pasa parametros contexto y atributo de modelo
+                    // boton llama a mostra panel y lo despliega y se le pasa parametros contexto y atributo de clase modelo
                     _showPanel(context, imageData);
                   },
                   style: ElevatedButton.styleFrom(
@@ -143,7 +144,7 @@ class _Pagina2State extends State<Pagina2> {
       },
     );
   }
-// metodo url de libreria url launcher
+// metodo url de libreria de flutter: URL_launcher
   void _launchMapsUrl(String mapsUrl) async {
     try {
       await launch(mapsUrl);

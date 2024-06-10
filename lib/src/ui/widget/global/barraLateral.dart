@@ -4,20 +4,20 @@ import 'package:aplicacion_basica_curso/src/ui/views/loginScreen.dart';
 import 'package:aplicacion_basica_curso/src/ui/views/lugares_interes.dart';
 import 'package:aplicacion_basica_curso/src/ui/views/horario_monumentos.dart';
 import 'package:aplicacion_basica_curso/src/ui/views/area_usuario.dart';
-//import 'package:aplicacion_basica_curso/src/ui/views/plano_ciudad.dart';
+//import 'package:aplicacion_basica_curso/src/ui/views/plano_ciudad.dart'; FUTURAS VERSIONES
 import 'package:flutter/material.dart';
-// barra lateral
+// clase de la barra lateral
 class BarraLateral extends StatelessWidget {
   const BarraLateral({
     super.key,
   });
-
   @override
   Widget build(BuildContext context) {
     String nombreUsuario = '';
     if (UserData().datosUsuarioTours != null && UserData().datosUsuarioTours!.isNotEmpty) {
       nombreUsuario = UserData().datosUsuarioTours![0]['nombre_user']; // llama a model user data para traer nombre del usuario
     }
+    // devuelve un boton para cada opcion del menu lateral
     return Drawer(
       child: Container(
         color: Color.fromARGB(245, 181, 136, 84), //const Color(0xFF5E5A3C),
@@ -160,7 +160,7 @@ class BarraLateral extends StatelessWidget {
                             Navigator.pushAndRemoveUntil(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => LoginScreen(), // vuelve al login
+                                builder: (context) => LoginScreen(), // vuelve a la ventana incial login
                               ),
                               (Route<dynamic> route) => false,
                             );

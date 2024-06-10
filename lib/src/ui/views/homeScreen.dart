@@ -1,6 +1,6 @@
 import 'package:aplicacion_basica_curso/src/ui/widget/barraNavegacion.dart';
 import 'package:flutter/material.dart';
-// ventana homescreen
+// clase ventana homescreen
 class HomeScreen extends StatelessWidget {
   const HomeScreen({
     Key? key,

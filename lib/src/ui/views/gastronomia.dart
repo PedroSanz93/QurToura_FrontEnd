@@ -1,20 +1,18 @@
 import 'package:aplicacion_basica_curso/src/data/remote/models/user_data.dart';
 import 'package:flutter/material.dart';
 
-// vista gastronomia
+// clase gastronomia
 class Gastronomy extends StatefulWidget {
   const Gastronomy({Key? key}) : super(key: key);
-
   @override
   State<Gastronomy> createState() => _GastronomyState();
 }
-
 class _GastronomyState extends State<Gastronomy> {
   @override
   Widget build(BuildContext context) {
     // obtener los datos de lugares de interes de la variable global
     List<dynamic>? placesOfInterest = UserData().datosLugaresInteresarioTours;
-
+    // devuelve la informacion montada y formateada
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(255, 122, 85, 62),
@@ -27,27 +25,27 @@ class _GastronomyState extends State<Gastronomy> {
       body: _buildPlacesOfInterest(placesOfInterest),
     );
   }
-
+  // widget para estructura de presentacion de la informacion de la vista gastronomia
   Widget _buildPlacesOfInterest(List<dynamic>? placesOfInterest) {
     if (placesOfInterest == null) {
-      // Mostrar un indicador de carga si la lista de lugares de interes es nula
+      // muestra un indicador de carga si la lista de lugares de interes es nula
       return const Center(child: CircularProgressIndicator());
     } else if (placesOfInterest.isEmpty) {
-      // Mostrar un mensaje si la lista de lugares de interes esta vacia
+      // muestra un mensaje si la lista de lugares de interes esta vacia
       return const Center(
           child: Text('No hay lugares de interés disponibles.'));
     } else {
-      // Filtrar los lugares de interés por idCategoria antes de mostrarlos
+      // filtra los lugares de interes por idCategoria antes de mostrarlos
       List<dynamic> filteredPlaces =
           placesOfInterest.where((place) => place['idCategoria'] == 2).toList();
 
-      // Mostrar la lista de lugares de interés filtrados
+      // muestra la lista de lugares de interes filtrados
       if (filteredPlaces.isEmpty) {
-        // Mostrar un mensaje si no hay lugares de interés disponibles después de filtrar
+        // muestra un mensaje si no hay lugares de interes disponibles despues de filtrar
         return const Center(
             child: Text('No hay lugares de interés disponibles.'));
       } else {
-        // Mostrar la lista de lugares de interés
+        // muestra la lista de lugares de interes
         return ListView.builder(
           itemCount: filteredPlaces.length,
           itemBuilder: (context, index) {
@@ -59,7 +57,7 @@ class _GastronomyState extends State<Gastronomy> {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(8),
                 ),
-                color: Color(0xFFE5E5E5), // Color complementario suave
+                color: Color(0xFFE5E5E5),
                 child: ListTile(
                   title: Text(
                     place['nombre'],
